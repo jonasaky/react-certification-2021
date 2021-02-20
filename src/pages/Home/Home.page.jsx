@@ -3,8 +3,11 @@ import { Link, useHistory } from 'react-router-dom';
 
 import { useAuth } from '../../providers/Auth';
 import './Home.styles.css';
+import mock from '../../mock.json';
+import VideoCard from '../../components/VideoCard';
 
 function HomePage() {
+  const youtubeVideos = mock.items;
   const history = useHistory();
   const sectionRef = useRef(null);
   const { authenticated, logout } = useAuth();
@@ -17,17 +20,16 @@ function HomePage() {
 
   return (
     <section className="homepage" ref={sectionRef}>
-      <h1>Hello stranger!</h1>
+      <h1>Welcome to YouTube videoclips!</h1>
       {authenticated ? (
         <>
-          <h2>Good to have you back</h2>
-          <span>
-            <Link to="/" onClick={deAuthenticate}>
-              ← logout
-            </Link>
-            <span className="separator" />
-            <Link to="/secret">show me something cool →</Link>
-          </span>
+          <div className="videoContainer">
+            {youtubeVideos.map((video) => 
+              <VideoCard 
+              key={video.etag} 
+              thumbnail={video.snippet.thumbnails.default.url} 
+              title={video.snippet.title} />)}
+          </div>
         </>
       ) : (
         <Link to="/login">let me in →</Link>

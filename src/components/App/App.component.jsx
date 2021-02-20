@@ -10,6 +10,7 @@ import Private from '../Private';
 import Fortune from '../Fortune';
 import Layout from '../Layout';
 import { random } from '../../utils/fns';
+import NavBar from '../NavBar';
 
 function App() {
   useLayoutEffect(() => {
@@ -34,6 +35,7 @@ function App() {
     <BrowserRouter>
       <AuthProvider>
         <Layout>
+          <NavBar />
           <Switch>
             <Route exact path="/">
               <HomePage />
