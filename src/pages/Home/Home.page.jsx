@@ -2,9 +2,9 @@ import React, { useRef } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
 import { useAuth } from '../../providers/Auth';
-import './Home.styles.css';
 import mock from '../../mock.json';
 import VideoCard from '../../components/VideoCard';
+import Styled from './styled';
 
 function HomePage() {
   const youtubeVideos = mock.items;
@@ -19,22 +19,22 @@ function HomePage() {
   }
 
   return (
-    <section className="homepage" ref={sectionRef}>
-      <h1>Welcome to YouTube videoclips!</h1>
+    <Styled.HomePage ref={sectionRef}>
+      <Styled.HomeTitle>Welcome to YouTube videoclips!</Styled.HomeTitle>
       {authenticated ? (
         <>
-          <div className="videoContainer">
+          <Styled.WrapperVideos>
             {youtubeVideos.map((video) => 
               <VideoCard 
               key={video.etag} 
               thumbnail={video.snippet.thumbnails.default.url} 
               title={video.snippet.title} />)}
-          </div>
+          </Styled.WrapperVideos>
         </>
       ) : (
         <Link to="/login">let me in →</Link>
       )}
-    </section>
+    </Styled.HomePage>
   );
 }
 

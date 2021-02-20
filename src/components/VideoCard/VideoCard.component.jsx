@@ -1,13 +1,13 @@
 import React from 'react';
-import './VideoCard.styles.css';
+import Styled from './styled';
 
 const VideoCard = (props) => {
 
     return (
-        <div className="video-card">
-            <img className="video-img" src={props.thumbnail} />
-            <p className="video-title">{props.title}</p>
-        </div>
+        <Styled.VideoCard>
+            <Styled.VideoImg src={props.thumbnail} />
+            <Styled.VideoTitle>{props.title}</Styled.VideoTitle>
+        </Styled.VideoCard>
     )
 }
 

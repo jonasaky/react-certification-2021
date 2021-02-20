@@ -1,18 +1,18 @@
 import React from 'react';
-import './NavBar.styles.css';
+import Styled from './styled';
 
 const NavBar = () => {
     return (
-        <div className="navbar">
-            <input className="searchField" type="text" placeholder="search..."></input>
+        <Styled.NavBar>
+            <Styled.SearchField placeholder="search..."></Styled.SearchField>
             
-            <label className="switch">
-                <input type="checkbox" />
-                <span className="slider round"></span>
-            </label>
+            <Styled.CheckBoxWrapper >
+                <Styled.CheckBox id="checkbox" type="checkbox" />
+                <Styled.CheckBoxLabel htmlFor="checkbox" />
+            </Styled.CheckBoxWrapper>
 
-            <button className="loginButton">Login</button>
-        </div>
+            <Styled.LoginButton >Login</Styled.LoginButton>
+        </Styled.NavBar>
     )
 }
 
