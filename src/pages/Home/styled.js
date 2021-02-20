@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const HomePage = styled.section`
     text-align: center;
@@ -17,10 +18,10 @@ const WrapperVideos = styled.div`
     padding: 0 0 0 50px;
 `;
 
-const Link = styled.a`
+const MyLink = styled(Link)`
     position: absolute;
     top: 40%;
 `;
 
-const Styled = { HomePage, HomeTitle, WrapperVideos, Link };
+const Styled = { HomePage, HomeTitle, WrapperVideos, MyLink };
 export default Styled;

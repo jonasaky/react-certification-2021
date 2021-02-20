@@ -32,7 +32,7 @@ function HomePage() {
           </Styled.WrapperVideos>
         </>
       ) : (
-        <Styled.Link to="/login">let me in →</Styled.Link>
+        <Styled.MyLink to="/login">let me in →</Styled.MyLink>
       )}
     </Styled.HomePage>
   );
