@@ -20,9 +20,9 @@ function HomePage() {
 
   return (
     <Styled.HomePage ref={sectionRef}>
-      <Styled.HomeTitle>Welcome to YouTube videoclips!</Styled.HomeTitle>
       {authenticated ? (
         <>
+          <Styled.HomeTitle>Welcome to YouTube videoclips!</Styled.HomeTitle>
           <Styled.WrapperVideos>
             {youtubeVideos.map((video) => 
               <VideoCard 
@@ -32,7 +32,7 @@ function HomePage() {
           </Styled.WrapperVideos>
         </>
       ) : (
-        <Link to="/login">let me in →</Link>
+        <Styled.Link to="/login">let me in →</Styled.Link>
       )}
     </Styled.HomePage>
   );

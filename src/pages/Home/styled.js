@@ -17,5 +17,10 @@ const WrapperVideos = styled.div`
     padding: 0 0 0 50px;
 `;
 
-const Styled = { HomePage, HomeTitle, WrapperVideos };
+const Link = styled.a`
+    position: absolute;
+    top: 40%;
+`;
+
+const Styled = { HomePage, HomeTitle, WrapperVideos, Link };
 export default Styled;
