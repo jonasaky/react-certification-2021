@@ -1,18 +1,18 @@
 import React from 'react';
-import Styled from './styled';
+import { NavBar as Navigation, SearchField, CheckBox, CheckBoxLabel, CheckBoxWrapper, LoginButton } from './styled';
 
 const NavBar = () => {
     return (
-        <Styled.NavBar>
-            <Styled.SearchField placeholder="search..."></Styled.SearchField>
+        <Navigation>
+            <SearchField placeholder="search..."></SearchField>
             
-            <Styled.CheckBoxWrapper >
-                <Styled.CheckBox id="checkbox" type="checkbox" />
-                <Styled.CheckBoxLabel htmlFor="checkbox" />
-            </Styled.CheckBoxWrapper>
+            <CheckBoxWrapper >
+                <CheckBox id="checkbox" type="checkbox" />
+                <CheckBoxLabel htmlFor="checkbox" />
+            </CheckBoxWrapper>
 
-            <Styled.LoginButton >Login</Styled.LoginButton>
-        </Styled.NavBar>
+            <LoginButton >Login</LoginButton>
+        </Navigation>
     )
 }
 

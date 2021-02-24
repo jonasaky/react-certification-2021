@@ -4,7 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../providers/Auth';
 import mock from '../../mock.json';
 import VideoCard from '../../components/VideoCard';
-import Styled from './styled';
+import { HomePage as Home, HomeTitle, WrapperVideos, MyLink } from './styled';
 
 function HomePage() {
   const youtubeVideos = mock.items;
@@ -19,22 +19,22 @@ function HomePage() {
   }
 
   return (
-    <Styled.HomePage ref={sectionRef}>
+    <Home ref={sectionRef}>
       {authenticated ? (
         <>
-          <Styled.HomeTitle>Welcome to YouTube videoclips!</Styled.HomeTitle>
-          <Styled.WrapperVideos>
+          <HomeTitle>Welcome to YouTube videoclips!</HomeTitle>
+          <WrapperVideos>
             {youtubeVideos.map((video) => 
               <VideoCard 
               key={video.etag} 
               thumbnail={video.snippet.thumbnails.default.url} 
               title={video.snippet.title} />)}
-          </Styled.WrapperVideos>
+          </WrapperVideos>
         </>
       ) : (
-        <Styled.MyLink to="/login">let me in →</Styled.MyLink>
+        <MyLink to="/login">let me in →</MyLink>
       )}
-    </Styled.HomePage>
+    </Home>
   );
 }
 

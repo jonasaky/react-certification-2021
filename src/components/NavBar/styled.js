@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const NavBar = styled.div`
+export const NavBar = styled.div`
     background-color: #5a458d;
     color: white;
     position: sticky;
@@ -10,7 +10,7 @@ const NavBar = styled.div`
     height: 4rem;
 `;
 
-const SearchField = styled.input`
+export const SearchField = styled.input`
     margin: 20px;
     height: 32px;
     width: 200px;
@@ -18,18 +18,19 @@ const SearchField = styled.input`
     color: white;
 `;
 
-const LoginButton = styled.button`
+export const LoginButton = styled.button`
     position: absolute;
     margin: 20px 0;
     height: 32px;
     left: 95%;
 `;
 
-const CheckBoxWrapper = styled.div`
+export const CheckBoxWrapper = styled.div`
   position: relative;
   display: inline-block;
 `;
-const CheckBoxLabel = styled.label`
+
+export const CheckBoxLabel = styled.label`
   position: absolute;
   top: 0;
   left: 0;
@@ -50,7 +51,8 @@ const CheckBoxLabel = styled.label`
     transition: 0.2s;
   }
 `;
-const CheckBox = styled.input`
+
+export const CheckBox = styled.input`
   opacity: 0;
   z-index: 1;
   border-radius: 15px;
@@ -69,6 +71,3 @@ const CheckBox = styled.input`
     }
   }
 `;
-
-const Styled = { NavBar, SearchField, LoginButton, CheckBoxWrapper, CheckBox, CheckBoxLabel };
-export default Styled;
