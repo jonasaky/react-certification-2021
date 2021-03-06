@@ -1,17 +1,41 @@
-import React from 'react';
-import { NavBar as Navigation, SearchField, CheckBox, CheckBoxLabel, CheckBoxWrapper, LoginButton } from './styled';
+import React, { useState } from 'react';
+import { NavBar as Navigation, SearchFieldWrapper, SearchField, CheckBox, CheckBoxLabel, CheckBoxWrapper, LoginButton, RightDiv } from './styled';
 
-const NavBar = () => {
+const NavBar = ({ onVideosChanged }) => {
+    const [searchValue, setSearchValue] = useState('elon musk on TED Talks');
+    const [darkMode, setDarkMode] = useState(true);
+    const baseApiUrl = 'https://youtube.googleapis.com/youtube/v3/search';
+
+    async function searchVideos(keystroke) {
+        if (keystroke === 'Enter') {
+            let response = await fetch(`${baseApiUrl}?part=snippet&maxResults=25&q=${searchValue}&key=${process.env.REACT_APP_API_KEY}`);
+
+            if (response.ok) { // if HTTP-status is 200-299
+            // get the response body (the method explained below)
+            let json = await response.json();
+            console.log(json);
+            onVideosChanged(json.items);
+            } else {
+            alert("HTTP-Error: " + response.status);
+            }
+        }
+    }
+
     return (
         <Navigation>
-            <SearchField placeholder="search..."></SearchField>
-            
-            <CheckBoxWrapper >
-                <CheckBox id="checkbox" type="checkbox" />
-                <CheckBoxLabel htmlFor="checkbox" />
-            </CheckBoxWrapper>
+            <SearchFieldWrapper>
+                <span><i className="fa fa-search"></i></span>
+                <SearchField placeholder="search..." value={searchValue} onChange={(e) => setSearchValue(e.target.value)} onKeyUp={(e) => searchVideos(e.key)}></SearchField>
+            </SearchFieldWrapper>
+            <RightDiv>
+                <CheckBoxWrapper >
+                    <CheckBox id="checkbox" type="checkbox" checked={darkMode} onChange={() => setDarkMode(!darkMode)} />
+                    <CheckBoxLabel htmlFor="checkbox" />
+                    <span>Dark Mode</span>
+                </CheckBoxWrapper>
 
-            <LoginButton >Login</LoginButton>
+                <LoginButton ><i className="fa fa-user icon"></i></LoginButton>
+            </RightDiv>
         </Navigation>
     )
 }
