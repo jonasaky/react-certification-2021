@@ -14,13 +14,13 @@ function useAuth() {
 }
 
 function AuthProvider({ children }) {
-  const [authenticated, setAuthenticated] = useState(false);
+  const [authenticated, setAuthenticated] = useState(true);
 
   useEffect(() => {
-    const lastAuthState = storage.get(AUTH_STORAGE_KEY);
-    const isAuthenticated = Boolean(lastAuthState);
+    // const lastAuthState = storage.get(AUTH_STORAGE_KEY);
+    // const isAuthenticated = Boolean(lastAuthState);
 
-    setAuthenticated(isAuthenticated);
+    // setAuthenticated(isAuthenticated);
   }, []);
 
   const login = useCallback(() => {
