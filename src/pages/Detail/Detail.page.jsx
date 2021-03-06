@@ -16,12 +16,11 @@ function Detail() {
       const getRelated = async () => {
           let response = await fetch(`${baseApiUrl}?part=snippet&relatedToVideoId=${videoId}&type=video&key=${process.env.REACT_APP_API_KEY}`)
   
-          if (response.ok) {
-              let json = await response.json();
-              console.log(json);
-              setRelatedVideos(json.items);
+          if (response.ok) { // if HTTP-status is 200-299
+            let json = await response.json();
+            setRelatedVideos(json.items);
           } else {
-              alert("HTTP-Error: " + response.status);
+            alert(`"HTTP-Error: " + ${response.status}\nGet Related Videos: Failed\nProbably because API_KEY is not set in your env`);
           }
       };
       getRelated();

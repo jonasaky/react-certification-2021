@@ -11,12 +11,10 @@ const NavBar = ({ onVideosChanged }) => {
             let response = await fetch(`${baseApiUrl}?part=snippet&maxResults=25&q=${searchValue}&key=${process.env.REACT_APP_API_KEY}`);
 
             if (response.ok) { // if HTTP-status is 200-299
-            // get the response body (the method explained below)
-            let json = await response.json();
-            console.log(json);
-            onVideosChanged(json.items);
+                let json = await response.json();
+                onVideosChanged(json.items);
             } else {
-            alert("HTTP-Error: " + response.status);
+                alert(`"HTTP-Error: " + ${response.status}\nSearch: Failed\nProbably because API_KEY is not set in your env`);
             }
         }
     }
