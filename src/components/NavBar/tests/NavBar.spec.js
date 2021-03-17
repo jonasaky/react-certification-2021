@@ -15,6 +15,6 @@ describe('Navigation bar', () => {
 
     it('contains a login button', () => {
         render(<NavBar />);
-        expect(screen.getByText('Login')).toBeTruthy();
-    })
+        expect(screen.getByRole('button')).toBeTruthy();
+    });
 });

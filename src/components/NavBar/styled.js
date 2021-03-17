@@ -7,27 +7,75 @@ export const NavBar = styled.div`
     top: 0;
     left: 0;
     width: 100%;
-    height: 4rem;
+    /* height: 4rem; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* align-content: center; */
+    justify-content: center;
+    padding: 20px;
+    flex-wrap: nowrap;
+    @media (max-width: 768px) {
+      flex-direction: column;
+      justify-content: unset;
+      align-items: flex-start;
+    }
+`;
+
+export const SearchFieldWrapper = styled.div`
+  /* something */
 `;
 
 export const SearchField = styled.input`
-    margin: 20px;
+    /* margin: 20px; */
     height: 32px;
-    width: 200px;
+    width: 400px;
     background-color: #baa7e7;
     color: white;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 0;
+    padding-left: 10px;
+    margin-left: 10px;
+    /* margin-left: 40%; */
+    /* margin-right: 50%; */
+    @media (max-width: 768px) {
+      width: 144px;
+    }
+`;
+
+export const RightDiv = styled.div`
+  position: absolute;
+  left: 85%;
+  /* margin-left: auto; */
+  @media (max-width: 768px) {
+    left: 50%;
+  }
 `;
 
 export const LoginButton = styled.button`
-    position: absolute;
-    margin: 20px 0;
+    /* position: absolute; */
+    /* margin: 20px; */
     height: 32px;
-    left: 95%;
+    width: 32px;
+    /* left: 90%; */
+    /* margin-left: auto; */
+    /* position: relative;
+    display: inline-block; */
+    border-radius: 18px;
+    :hover {
+      background-color: purple;
+    }
+    :focus {
+      outline: 0;
+    }
 `;
 
 export const CheckBoxWrapper = styled.div`
   position: relative;
   display: inline-block;
+  /* left: 80%; */
+  margin-right: 20px;
 `;
 
 export const CheckBoxLabel = styled.label`
