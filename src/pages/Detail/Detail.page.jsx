@@ -4,23 +4,23 @@ import { escapeString } from '../../utils/escapeString';
 import { formatDate } from '../../utils/formatDate';
 import { HomeLink, Detail as DetailWrap, RelatedCardWrapper, RelatedCard, Video, IframeWrapper, Desc, DateSpan, Title } from './styled';
 import mock from '../../mockRelatedVideos.json';
+import { API_BASE_URL } from '../../utils/constants';
 
 function Detail() {
     const location = useLocation();
     const [relatedVideos, setRelatedVideos] = useState(mock.items);
     const { videoId, title, description, publishedAt } = location.state;
     const [video, setVideo] = useState({ videoId, title, description, publishedAt});
-    const baseApiUrl = 'https://youtube.googleapis.com/youtube/v3/search';
     
     useEffect(() => {
       const getRelated = async () => {
-          let response = await fetch(`${baseApiUrl}?part=snippet&relatedToVideoId=${videoId}&type=video&key=${process.env.REACT_APP_API_KEY}`)
+          let response = await fetch(`${API_BASE_URL}?part=snippet&relatedToVideoId=${videoId}&type=video&key=${process.env.REACT_APP_API_KEY}`)
   
           if (response.ok) { // if HTTP-status is 200-299
             let json = await response.json();
             setRelatedVideos(json.items);
           } else {
-            alert(`"HTTP-Error: " + ${response.status}\nGet Related Videos: Failed\nProbably because API_KEY is not set in your env`);
+            console.log(`HTTP-Error: ${response.status}`);
           }
       };
       getRelated();

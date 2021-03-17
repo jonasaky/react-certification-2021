@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
+import { API_BASE_URL } from '../../utils/constants';
 import { NavBar as Navigation, SearchFieldWrapper, SearchField, CheckBox, CheckBoxLabel, CheckBoxWrapper, LoginButton, RightDiv } from './styled';
 
 const NavBar = ({ onVideosChanged }) => {
     const [searchValue, setSearchValue] = useState('elon musk on TED Talks');
     const [darkMode, setDarkMode] = useState(true);
-    const baseApiUrl = 'https://youtube.googleapis.com/youtube/v3/search';
 
     async function searchVideos(keystroke) {
         if (keystroke === 'Enter') {
-            let response = await fetch(`${baseApiUrl}?part=snippet&maxResults=25&q=${searchValue}&key=${process.env.REACT_APP_API_KEY}`);
+            let response = await fetch(`${API_BASE_URL}?part=snippet&maxResults=25&q=${searchValue}&key=${process.env.REACT_APP_API_KEY}`);
 
             if (response.ok) { // if HTTP-status is 200-299
                 let json = await response.json();
                 onVideosChanged(json.items);
             } else {
-                alert(`"HTTP-Error: " + ${response.status}\nSearch: Failed\nProbably because API_KEY is not set in your env`);
+                console.log(`HTTP-Error: ${response.status}`);
             }
         }
     }
