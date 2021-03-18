@@ -1,29 +1,17 @@
 import React, { useRef, useState } from 'react';
-// import { useHistory } from 'react-router-dom';
-
-import { useAuth } from '../../providers/Auth';
 import mock from '../../mock.json';
 import VideoCard from '../../components/VideoCard';
-import { HomePage as Home, HomeTitle, WrapperVideos, MyLink } from './styled';
+import { HomePage as Home, HomeTitle, WrapperVideos } from './styled';
 import NavBar from '../../components/NavBar';
 
 function HomePage() {
-  // const history = useHistory();
   const sectionRef = useRef(null);
-  const { authenticated } = useAuth();
-  const [videos, setVideos] = useState(mock.items);
-
-  // function deAuthenticate(event) {
-  //   event.preventDefault();
-  //   logout();
-  //   history.push('/');
-  // }
+  const [videos, setVideos] = useState(mock.items.slice(0,24));
 
   return (
     <>
     <NavBar onVideosChanged={setVideos}/>
     <Home ref={sectionRef}>
-      {authenticated ? (
         <>
           <HomeTitle>Welcome to YouTube videoclips!</HomeTitle>
           <WrapperVideos>
@@ -38,9 +26,6 @@ function HomePage() {
               />)}
           </WrapperVideos>
         </>
-      ) : (
-        <MyLink to="/login">let me in →</MyLink>
-      )}
     </Home>
     </>
   );
