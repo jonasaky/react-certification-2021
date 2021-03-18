@@ -1,11 +1,17 @@
 import React from 'react';
 import { render, screen } from "@testing-library/react";
 import Home from '../Home.page';
-import { useAuth } from '../../../providers/Auth';
-
-jest.mock("../../../providers/Auth", () => ({
-    useAuth: () => ({
-        authenticated: true,
+const mockState = {
+    searchKeyword: 'elon musk on TED Talks',
+    theme: {
+        fg: 'white',
+        bg: '#5a458d',
+    },
+    isDarkMode: true,
+}
+jest.mock("../../../providers/Global", () => ({
+    useGlobal: () => ({
+        state: mockState,
     }),
 }));
 
