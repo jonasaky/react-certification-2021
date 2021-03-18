@@ -5,9 +5,9 @@ export const VideoCard = styled.div`
     flex-direction: column;
     width: 400px;
     height: 300px;
-    margin: 10px;
+    margin: 14px;
     border-radius: 8px;
-    box-shadow: 4px 4px 8px lightgray;
+    box-shadow: 0px 0px 6px darkgray;
     cursor: pointer;
 `;
 
@@ -30,4 +30,9 @@ export const VideoTitle = styled.p`
     margin: 0;
     text-align: left;
     border-radius: 0 0 8px 8px;
+`;
+
+export const VideoDate = styled.span`
+    font-size: 12px;
+    font-style: italic;
 `;

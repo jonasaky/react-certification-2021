@@ -1,7 +1,8 @@
 import React from 'react';
 import { useHistory } from 'react-router';
 import { escapeString } from '../../utils/escapeString';
-import { VideoCard as Video, VideoImgWrapper, Img, VideoTitle } from './styled';
+import { formatDate } from '../../utils/formatDate';
+import { VideoCard as Video, VideoImgWrapper, Img, VideoTitle, VideoDate } from './styled';
 
 const VideoCard = (props) => {
     const history = useHistory();
@@ -24,7 +25,7 @@ const VideoCard = (props) => {
             <VideoImgWrapper>
                 <Img src={thumbnail} />
             </VideoImgWrapper>
-            <VideoTitle>{escapeString(title)}</VideoTitle>
+            <VideoTitle>{escapeString(title)}<br/><VideoDate>({formatDate(publishedAt)})</VideoDate></VideoTitle>
         </Video>
     )
 }
