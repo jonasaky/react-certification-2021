@@ -3,6 +3,45 @@ import React from 'react';
 import Detail from '../Detail.page';
 import { BrowserRouter } from 'react-router-dom'
 
+const mockState = {
+    relatedVid: [
+        {
+            etag: "k1wyJbCHKeQDdhqFwho3uNKqZbM",
+            id: {
+                videoId: '1',
+            },
+            snippet: {
+                title: "The future we&#39;re building -- and boring | Elon Musk",
+                thumbnails: {
+                    medium: {
+                        url: "https://i.ytimg.com/vi/zIwLWfaAg-8/mqdefault.jpg",
+                    },
+                },
+            }
+        },
+        {
+            etag: "k1wyJbCHKeQDdhqFwho3uNKqZbMx",
+            id: {
+                videoId: '2',
+            },
+            snippet: {
+                title: "The future we&#39;re building -- and boring | Elon Musk",
+                thumbnails: {
+                    medium: {
+                        url: "https://i.ytimg.com/vi/zIwLWfaAg-8/mqdefault.jpg",
+                    },
+                },
+            }
+        },
+    ]
+}
+
+jest.mock('../../../providers/Global', () => ({
+    useGlobal: () => ({
+        state: mockState,
+    }),
+}));
+
 // test utils file
 const renderWithRouter = (ui, { route = '/' } = {}) => {
     window.history.pushState({state: {
@@ -38,6 +77,6 @@ describe('Detail page', () => {
     
     it('contains related videos with img elements', () => {
         renderWithRouter(<Detail />);
-        expect(screen.getAllByRole('img').length).toBeGreaterThanOrEqual(5);
+        expect(screen.getAllByRole('img').length).toBeGreaterThanOrEqual(2);
     });
 })

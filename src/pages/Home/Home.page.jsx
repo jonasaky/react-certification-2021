@@ -1,21 +1,22 @@
-import React, { useRef, useState } from 'react';
-import mock from '../../mock.json';
+import React, { useRef } from 'react';
 import VideoCard from '../../components/VideoCard';
 import { HomePage as Home, HomeTitle, WrapperVideos } from './styled';
 import NavBar from '../../components/NavBar';
+import { useGlobal } from '../../providers/Global';
 
 function HomePage() {
+  const { state } = useGlobal();
+  const { videos } = state;
   const sectionRef = useRef(null);
-  const [videos, setVideos] = useState(mock.items.slice(0,24));
 
   return (
     <>
-    <NavBar onVideosChanged={setVideos}/>
+    <NavBar />
     <Home ref={sectionRef}>
         <>
           <HomeTitle>Welcome to YouTube videoclips!</HomeTitle>
           <WrapperVideos>
-            {videos.map((video) => 
+            {videos && videos.map((video) => 
               <VideoCard 
               key={video.etag}
               videoId={video.id.videoId} 

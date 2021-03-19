@@ -1,3 +1,6 @@
+import mock from '../../mock.json';
+import mockRelated from '../../mockRelatedVideos.json';
+
 // This fn swaps `fg` and `bg`
 const invertTheme = ({ fg, bg }) => ({
     fg: bg,
@@ -12,12 +15,21 @@ export function globalReducer(state, action) {
                 searchKeyword: action.payload,
             }
         case 'theme':
-            console.log(action.payload);
             let theme = action.payload ? initialState.theme : invertTheme(initialState.theme);
             return {
                 ...state,
                 theme,
                 isDarkMode: action.payload,
+            }
+        case 'updateVideos':
+            return {
+                ...state,
+                videos: action.payload,
+            }
+        case 'updateRelated':
+            return {
+                ...state,
+                relatedVid: action.payload,
             }
         default:
             return state;
@@ -31,4 +43,6 @@ export const initialState = {
         bg: '#0d1117',
     },
     isDarkMode: true,
+    videos: mock.items.slice(0,24),
+    relatedVid: mockRelated.items,
 }
