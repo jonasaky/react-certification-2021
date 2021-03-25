@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 function SecretPage() {
   return (
     <section>
-      <pre>
+      <pre style={{marginTop: 80}}>
         welcome, voyager...
         <Link to="/"> ← go back</Link>
       </pre>

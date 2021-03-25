@@ -77,7 +77,20 @@ export const RelatedCard = styled.div`
     align-items: flex-start;
     /* justify-content: space-between; */
     > img {
+        width: 40%;
         margin-right: 6px;
     }
     box-shadow: inset 0 -1px gray;
+`;
+
+export const FavButton = styled.input`
+    background-color: mediumpurple;
+    padding: 4px 14px;
+    border: 1px solid purple;
+    :focus {
+      outline: 0;
+    }
+    :active {
+        background-color: purple;
+    }
 `;
