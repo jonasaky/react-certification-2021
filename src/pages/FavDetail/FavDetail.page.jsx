@@ -8,11 +8,11 @@ import { useGlobal } from '../../providers/Global';
 
 function FavDetail() {
     const { state } = useGlobal();
-    const { videos } = state;
+    const { favoritesVid } = state;
 
     const location = useLocation();
-    const { videoId, title, description, publishedAt } = location.state;
-    const [video, setVideo] = useState({ videoId, title, description, publishedAt});
+    const { videoId, title, description, publishedAt, thumbnail } = location.state;
+    const [video, setVideo] = useState({ videoId, title, description, publishedAt, thumbnail });
 
     return (
         <>
@@ -28,13 +28,11 @@ function FavDetail() {
                 </Video>
                 <RelatedCardWrapper>
                     <h3>Favorite videos <span role="img" aria-label="hearts">💕</span></h3>
-                {videos.slice(10,15).map((video) => {
-                const { title, description, publishedAt } = video.snippet;
-                const { videoId } = video.id;
+                {favoritesVid.slice(10,15).map((video) => {
                 return (
-                    <RelatedCard key={video.etag} onClick={() => setVideo({ videoId, title, description, publishedAt})}>
-                        <img src={video.snippet.thumbnails.medium.url} alt={video.snippet.title}/>
-                        <span>{video.snippet.title}</span>
+                    <RelatedCard key={video.videoId} onClick={() => setVideo({ videoId, title, description, publishedAt, thumbnail })}>
+                        <img src={video.thumbnail} alt={video.title}/>
+                        <span>{video.title}</span>
                     </RelatedCard>)
                 }
                 )}
