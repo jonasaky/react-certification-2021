@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 export const HomePage = styled.section`
     text-align: center;
     margin-top: 50px;
+    background-color: ${props => props.theme.bg};
+    color: ${props => props.theme.fg};
 `;
 
 export const HomeTitle = styled.h1`

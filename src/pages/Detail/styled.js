@@ -4,9 +4,12 @@ import { Link } from 'react-router-dom';
 export const HomeLink = styled(Link)`
     margin-top: 60px;
     margin-bottom: -40px;
+    color: ${props => props.theme.fg};
 `;
 
 export const Detail = styled.div`
+    background-color: ${props => props.theme.bg};
+    color: ${props => props.theme.fg};
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
