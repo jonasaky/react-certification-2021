@@ -28,11 +28,11 @@ function FavDetail() {
                 </Video>
                 <RelatedCardWrapper>
                     <h3>Favorite videos <span role="img" aria-label="hearts">💕</span></h3>
-                {favoritesVid.slice(10,15).map((video) => {
+                {favoritesVid.map((video) => {
                 return (
                     <RelatedCard key={video.videoId} onClick={() => setVideo({ videoId, title, description, publishedAt, thumbnail })}>
                         <img src={video.thumbnail} alt={video.title}/>
-                        <span>{video.title}</span>
+                        <span>{escapeString(video.title)}</span>
                     </RelatedCard>)
                 }
                 )}
