@@ -35,4 +35,5 @@ export const VideoTitle = styled.p`
 export const VideoDate = styled.span`
     font-size: 12px;
     font-style: italic;
+    display: block;
 `;

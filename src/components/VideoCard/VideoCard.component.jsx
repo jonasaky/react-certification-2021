@@ -27,7 +27,7 @@ const VideoCard = (props) => {
             <VideoImgWrapper>
                 <Img src={thumbnail} />
             </VideoImgWrapper>
-            <VideoTitle>{escapeString(title)}<br/><VideoDate>({formatDate(publishedAt)})</VideoDate></VideoTitle>
+            <VideoTitle>{escapeString(title)}<VideoDate>({formatDate(publishedAt)})</VideoDate></VideoTitle>
         </Video>
     )
 }
