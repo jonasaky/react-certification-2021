@@ -12,7 +12,7 @@ function Detail() {
     const { relatedVid, favoritesVid, isAuthenticated } = state;
     const location = useLocation();
     const { videoId, title, description, publishedAt, thumbnail } = location.state;
-    const [video, setVideo] = useState({ videoId, title, description, publishedAt, thumbnail, isFavorite: favoritesVid.filter(v => v.videoId === videoId).length > 0 });
+    const [video, setVideo] = useState({ videoId, title, description, publishedAt, thumbnail, isFavorite: favoritesVid?.filter(v => v.videoId === videoId).length > 0 });
     const url = `${API_BASE_URL}?part=snippet&relatedToVideoId=${videoId}&type=video&key=${process.env.REACT_APP_API_KEY}`;
     useFetch(url, 'updateRelated');
 
