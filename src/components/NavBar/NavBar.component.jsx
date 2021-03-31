@@ -12,7 +12,6 @@ const NavBar = () => {
     const history = useHistory();
     const { state, dispatch } = useGlobal();
     const { searchKeyword, isDarkMode, isAuthenticated, user } = state;
-    const [darkMode, setDarkMode] = useState(isDarkMode);
     const [url, setUrl] = useState('');
     const [anchorEl, setAnchorEl] = useState(null);
     useFetch(url, 'updateVideos');
@@ -24,12 +23,11 @@ const NavBar = () => {
     }
 
     function updateKeyword(e) {
-        return dispatch({ type: 'search', payload: e.target.value });
+        dispatch({ type: 'search', payload: e.target.value });
     }
 
     function toggleTheme() {
-        setDarkMode(!darkMode);
-        dispatch({ type: 'theme', payload: !darkMode });
+        dispatch({ type: 'theme', payload: !isDarkMode });
     }
 
     function goToLogin() {
@@ -60,7 +58,7 @@ const NavBar = () => {
             </SearchFieldWrapper>
             <RightDiv>
                 <CheckBoxWrapper >
-                    <CheckBox id="checkbox" type="checkbox" checked={darkMode} onChange={() => toggleTheme()} />
+                    <CheckBox id="checkbox" type="checkbox" checked={isDarkMode} onChange={toggleTheme} />
                     <CheckBoxLabel htmlFor="checkbox" />
                     <span>Dark Mode</span>
                 </CheckBoxWrapper>
