@@ -1,5 +1,7 @@
 .login {
   width: 300px;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .login h1 {
@@ -44,4 +46,32 @@
   font-size: 1.2rem;
   border: none;
   border-radius: 3px;
+}
+
+.error {
+  background-color: #fde6ec;
+  padding: 8px 15px;
+  color: darkred;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.error i {
+  padding-right: 8px;
+}
+
+.fa-spinner {
+  margin-left: 50%;
+  animation: load8 1.1s infinite linear;
+}
+
+@keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
 }

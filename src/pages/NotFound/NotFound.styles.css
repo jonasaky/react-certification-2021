@@ -4,6 +4,7 @@
   display: block;
   text-align: right;
   padding: 0.2rem 0.3rem;
+  margin-top: 80px;
 }
 
 .home-link::before {

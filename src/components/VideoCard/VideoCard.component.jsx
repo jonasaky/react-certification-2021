@@ -6,16 +6,18 @@ import { VideoCard as Video, VideoImgWrapper, Img, VideoTitle, VideoDate } from 
 
 const VideoCard = (props) => {
     const history = useHistory();
-    const { thumbnail, videoId, title, description, publishedAt } = props;
+    const { thumbnail, videoId, title, description, publishedAt, route } = props;
 
     function goToDetail() {
+        const pathname = route || '/detail';
         history.push({
-            pathname: '/detail', 
+            pathname: pathname, 
             state: {
                 videoId,
                 title,
                 description,
                 publishedAt,
+                thumbnail,
             },
         });
     }
@@ -25,7 +27,7 @@ const VideoCard = (props) => {
             <VideoImgWrapper>
                 <Img src={thumbnail} />
             </VideoImgWrapper>
-            <VideoTitle>{escapeString(title)}<br/><VideoDate>({formatDate(publishedAt)})</VideoDate></VideoTitle>
+            <VideoTitle>{escapeString(title)}<VideoDate>({formatDate(publishedAt)})</VideoDate></VideoTitle>
         </Video>
     )
 }
